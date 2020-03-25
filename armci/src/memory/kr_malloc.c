@@ -76,6 +76,9 @@ static Header *morecore(size_t nu, context_t *ctx) {
 #      if DEBUG
          armci_die("kr_malloc: morecore: maximum allocation reached",armci_me);
 #      endif
+       fprintf(stderr, "\nWARNING: Maximum allocation in GA reached\n");
+       fprintf(stderr, "Pre-allocation of shared memory for GA may be needed with a -G command line option.\n");
+       fprintf(stderr, "See \"Running Molpro on Parallel Computers\" in Molpro manual for more details.\n\n");
        return (Header *) NULL;   /* Enforce upper limit on core usage */
     }
 
