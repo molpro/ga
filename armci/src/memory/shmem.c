@@ -1206,7 +1206,7 @@ int  reg, refreg=0,nreg;
     else temp = kr_malloc((size_t)size, ctx_shmem_global);
 
     if(temp == (char*)0 )
-       armci_die("CreateSharedRegion:kr_malloc failed KB=",(int)size>>10);
+       armci_die("CreateSharedRegion:kr_malloc failed MB=",(int)(size>>20));
     
     if(!(nreg=find_regions(temp,id,&reg)))
         armci_die("CreateSharedRegion: allocation inconsitent",0);
