@@ -1,0 +1,13 @@
+image: ${CI_REGISTRY}/molpro/docker
+
+tgz:
+  cache: {}
+  script:
+    - zypper in -y patch wget
+    - ./autogen.sh
+    - rm -rf autotools autom4te.cache .git
+    - tar -C .. -czf /tmp/${CI_PROJECT_NAME}.tar.gz ${CI_PROJECT_NAME}
+    - mv /tmp/${CI_PROJECT_NAME}.tar.gz .
+  artifacts:
+    paths:
+      - ${CI_PROJECT_NAME}.tar.gz
